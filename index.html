@@ -1,1 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ragebait CAPTCHA Gauntlet</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            mono: ['Courier New', 'Fira Code', 'Consolas', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-red-500 selection:text-white">
 
+  <!-- Global Header Bar (Hanging Hell Iron Panel) -->
+  <header id="global-header-nav" class="hidden w-full relative z-40 flex justify-center px-2 py-1 select-none">
+    <div class="relative w-full max-w-5xl aspect-[1024/353] overflow-hidden drop-shadow-[0_12px_30px_rgba(220,38,38,0.25)]">
+      <!-- Background Hanging Chains & Stone Banner Artwork -->
+      <img src="assets/images/header_panel.png" alt="Captcha From Hell Header" class="w-full h-full object-cover select-none pointer-events-none" />
+
+      <!-- Interactive Dynamic Elements Overlay -->
+      <div class="absolute inset-0 pointer-events-auto">
+        
+        <!-- Stage Title Text (Overlays 'STAGE 0: CHECKBOX BAIT') -->
+        <div class="absolute top-[51.5%] left-[16.5%] w-[33%] h-[12%] flex items-center">
+          <div id="current-stage-title" class="bg-[#060202] text-rose-500 font-mono text-[9px] sm:text-xs md:text-sm font-black tracking-wider uppercase truncate px-2 py-0.5 border border-red-950/80 rounded shadow-inner">
+            STAGE 0: CHECKBOX BAIT
+          </div>
+        </div>
+
+        <!-- Stepper Dots Container (Overlays 11 Dots) -->
+        <div class="absolute top-[52%] left-[50.8%] w-[13.2%] h-[10.5%] flex items-center justify-center">
+          <div id="stage-stepper-dots" class="bg-[#060202] px-1 py-0.5 rounded border border-red-950/80 flex items-center space-x-1 sm:space-x-1.5 shadow-inner">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+        <!-- RAGE Click Counter (Overlays '⚡ RAGE: 71') -->
+        <div class="absolute top-[47.2%] left-[64.6%] w-[9.8%] h-[15.8%] flex items-center justify-center">
+          <div class="w-full h-full bg-[#060202] border border-red-950/90 rounded-lg flex items-center justify-center space-x-1 text-[8px] sm:text-[11px] font-mono text-red-400 font-bold shadow-inner">
+            <span class="text-rose-500 animate-pulse text-[10px]">⚡</span>
+            <span class="text-[8px] sm:text-[9px] text-zinc-400 hidden sm:inline">RAGE:</span>
+            <span id="global-rage-clicks" class="text-red-400">0</span>
+          </div>
+        </div>
+
+        <!-- Audio Toggle Button (Overlays '🔊 AUDIO: ON') -->
+        <div class="absolute top-[47.2%] left-[74.7%] w-[9.8%] h-[15.8%] flex items-center justify-center">
+          <button id="btn-toggle-sound" class="w-full h-full bg-[#060202] hover:bg-[#1a0609] active:scale-95 border border-red-950/90 rounded-lg flex items-center justify-center space-x-1 text-[8px] sm:text-[10px] font-mono text-red-300 font-bold cursor-pointer transition-all shadow-inner" title="Toggle Sound">
+            <span id="btn-toggle-sound-text">🔊 AUDIO: ON</span>
+          </button>
+        </div>
+
+        <!-- Stage Counter Badge (Overlays '1 / 11') -->
+        <div class="absolute top-[47.2%] left-[84.8%] w-[9.4%] h-[15.8%] flex items-center justify-center">
+          <div class="w-full h-full bg-[#060202] border border-red-950/90 rounded-lg flex items-center justify-center text-[9px] sm:text-[11px] font-mono text-red-400 font-black shadow-inner">
+            <span id="current-stage-badge">1 / 11</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Stage Mount Point -->
+  <main class="flex-1 flex items-center justify-center py-4 px-2 sm:px-3">
+    <div id="stage-mount-point" class="w-full">
+      <!-- Active stage component mounts here -->
+    </div>
+  </main>
+
+  <!-- Debug Stage Jumper Bar (Discreet bottom helper for rapid testing) -->
+  <footer class="w-full bg-[#040102]/95 border-t border-red-950/70 px-4 py-2 text-[10px] font-mono text-zinc-500 flex flex-wrap items-center justify-between gap-2">
+    <div class="flex items-center space-x-1">
+      <span class="text-red-900 font-bold">WARP:</span>
+      <button onclick="showTitleScreen()" class="px-1.5 py-0.5 bg-[#140608] hover:bg-red-950 border border-red-900/60 rounded text-rose-400 font-bold hover:text-rose-300 transition-colors">Title</button>
+      <button onclick="loadStage(0)" class="px-1.5 py-0.5 hover:bg-[#1a080c] rounded text-zinc-400 hover:text-red-300">0</button>
+      <button onclick="loadStage(1)" class="px-1.5 py-0.5 hover:bg-[#1a080c] rounded text-zinc-400 hover:text-red-300">1</button>
+      <button onclick="loadStage(2)" class="px-1.5 py-0.5 hover:bg-[#1a080c] rounded text-zinc-400 hover:text-red-300">2</button>
+      <button onclick="loadStage(3)" class="px-1.5 py-0.5 hover:bg-[#1a080c] rounded text-zinc-400 hover:text-red-300">3</button>
+      <button onclick="loadStage(4)" class="px-1.5 py-0.5 hover:bg-[#1a080c] rounded text-zinc-400 hover:text-red-300">4</button>
+      <button onclick="loadStage(5)" class="px-1.5 py-0.5 hover:bg-[#1a080c] rounded text-zinc-400 hover:text-red-300">5</button>
+      <button onclick="loadStage(6)" class="px-1.5 py-0.5 hover:bg-[#1a080c] rounded text-zinc-400 hover:text-red-300">6</button>
+      <button onclick="loadStage(7)" class="px-1.5 py-0.5 hover:bg-[#1a080c] rounded text-zinc-400 hover:text-red-300">7</button>
+      <button onclick="loadStage(8)" class="px-1.5 py-0.5 hover:bg-[#1a080c] rounded text-zinc-400 hover:text-red-300">8</button>
+      <button onclick="loadStage(9)" class="px-1.5 py-0.5 hover:bg-[#1a080c] rounded text-zinc-400 hover:text-red-300">9</button>
+      <button onclick="loadStage(10)" class="px-1.5 py-0.5 hover:bg-[#1a080c] rounded text-zinc-400 hover:text-red-300">10</button>
+      <button onclick="showDiagnosticLoader()" class="px-1.5 py-0.5 bg-[#140608] hover:bg-red-950 border border-red-900/60 rounded text-red-400 font-bold hover:text-red-300 transition-colors">Dossier</button>
+    </div>
+
+    <div class="text-zinc-600">
+      † CAPTCHA FROM HELL &bull; 100% Client-Side Web APIs †
+    </div>
+  </footer>
+
+  <!-- Modular Scripts -->
+  <script src="js/state.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/sprites.js"></script>
+  <script src="js/stages/stage0.js"></script>
+  <script src="js/stages/stage1.js"></script>
+  <script src="js/stages/stage2.js"></script>
+  <script src="js/stages/stage3.js"></script>
+  <script src="js/stages/stage4.js"></script>
+  <script src="js/stages/stage5.js"></script>
+  <script src="js/stages/stage6.js"></script>
+  <script src="js/stages/stage7.js"></script>
+  <script src="js/stages/stage8.js"></script>
+  <script src="js/stages/stage9.js"></script>
+  <script src="js/stages/stage10.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+/* Custom Styles & CRT / Rage Animations */
+
+body {
+  background: radial-gradient(circle at 50% 15%, #180508 0%, #0a0204 45%, #020102 100%) !important;
+  background-attachment: fixed !important;
+}
+
+.hell-glow {
+  box-shadow: 0 0 25px rgba(220, 38, 38, 0.35), inset 0 0 15px rgba(220, 38, 38, 0.2);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  10%, 30%, 50%, 70%, 90% { transform: translate(-4px, 2px) rotate(-1deg); }
+  20%, 40%, 60%, 80% { transform: translate(4px, -2px) rotate(1deg); }
+}
+
+@keyframes flash-red-border {
+  0%, 100% { border-color: rgba(239, 68, 68, 1); box-shadow: 0 0 25px rgba(239, 68, 68, 0.8), inset 0 0 15px rgba(239, 68, 68, 0.5); }
+  50% { border-color: rgba(220, 38, 38, 0.3); box-shadow: 0 0 5px rgba(239, 68, 68, 0.2); }
+}
+
+@keyframes crt-flicker {
+  0% { opacity: 0.99; }
+  50% { opacity: 1; }
+  52% { opacity: 0.95; }
+  54% { opacity: 1; }
+  80% { opacity: 0.98; }
+  100% { opacity: 1; }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(1000%); }
+}
+
+@keyframes float-wither {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+
+@keyframes star-spin {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.1); filter: drop-shadow(0 0 12px #a78bfa); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+.shake-active {
+  animation: shake 0.4s ease-in-out;
+}
+
+.flash-red {
+  animation: flash-red-border 0.2s ease-in-out infinite;
+}
+
+.wither-float {
+  animation: float-wither 2s ease-in-out infinite;
+}
+
+.star-spin-fx {
+  animation: star-spin 3s linear infinite;
+}
+
+/* CRT Overlay */
+.crt-screen {
+  position: relative;
+  background: #090d0b;
+  color: #22c55e;
+  text-shadow: 0 0 6px rgba(34, 197, 94, 0.65);
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.crt-screen::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.04));
+  z-index: 20;
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+}
+
+.crt-screen::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: rgba(18, 16, 16, 0.1);
+  opacity: 0;
+  z-index: 21;
+  pointer-events: none;
+  animation: crt-flicker 0.15s infinite;
+}
+
+/* Pixel Art Rendering */
+.pixelated {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+/* Minecraft UI Styles */
+.mc-card {
+  background-color: #c6c6c6;
+  border-top: 4px solid #ffffff;
+  border-left: 4px solid #ffffff;
+  border-right: 4px solid #555555;
+  border-bottom: 4px solid #555555;
+  box-shadow: 4px 4px 0px #000000;
+  font-family: 'Courier New', monospace;
+}
+
+.mc-slot {
+  width: 52px;
+  height: 52px;
+  background-color: #8b8b8b;
+  border-top: 3px solid #373737;
+  border-left: 3px solid #373737;
+  border-right: 3px solid #ffffff;
+  border-bottom: 3px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  position: relative;
+  transition: background-color 0.1s ease;
+}
+
+.mc-slot:hover {
+  background-color: #a0a0a0;
+}
+
+.mc-slot.active-target {
+  background-color: #bbf7d0;
+  border-color: #22c55e;
+}
+
+.mc-btn {
+  background-color: #727272;
+  border-top: 2px solid #aaaaaa;
+  border-left: 2px solid #aaaaaa;
+  border-right: 2px solid #333333;
+  border-bottom: 2px solid #333333;
+  color: #ffffff;
+  text-shadow: 1px 1px 0px #000000;
+  font-weight: bold;
+}
+
+.mc-btn:hover {
+  background-color: #8a8a8a;
+}
+
+.mc-btn:active {
+  border-top: 2px solid #333333;
+  border-left: 2px solid #333333;
+  border-right: 2px solid #aaaaaa;
+  border-bottom: 2px solid #aaaaaa;
+}
+
+/* Drag & Drop helpers */
+.dragging-item {
+  opacity: 0.5;
+  transform: scale(0.9);
+}
+
+/* Custom Scrollbar for Chat */
+.chat-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.chat-scroll::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+.chat-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+/* Terminal Cursor */
+.terminal-cursor {
+  display: inline-block;
+  width: 9px;
+  height: 18px;
+  background-color: #22c55e;
+  vertical-align: sub;
+  animation: blink 0.8s step-start infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
