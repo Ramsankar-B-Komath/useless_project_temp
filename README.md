@@ -152,7 +152,6 @@ useless_project_temp/
 ├── index.html               # Main entry point & layout chassis
 ├── server.ps1               # Lightweight static PowerShell HTTP server
 ├── start_server.bat         # 1-click Windows runner script
-├── vercel.json              # Vercel deployment & cache optimization config
 ├── README.md                # Project documentation & gameplay showcase
 ├── css/
 │   └── styles.css           # Hellfire gradients, CRT monitor overlays, Minecraft UI, animations
