@@ -1,4 +1,4 @@
-﻿<div align="center">
+<div align="center">
 
 <img width="1280" height="640" alt="Ragebait CAPTCHA Banner" src="https://github.com/user-attachments/assets/8920b256-2ba8-4988-b824-5351134eb4bd" />
 
@@ -226,6 +226,15 @@ For rapid testing or reviewing specific stages, a discreet **WARP** debug bar is
 * Click **`Title`** to return to the Hellfire Title Screen.
 * Click numbers **`0`** through **`10`** to jump directly to any challenge.
 * Click **`Dossier`** to test the final CRT Telemetry End Screen and hardware roast.
+
+---
+
+## 👥 Team Contributions
+
+| Member | Role & Contributions |
+| :--- | :--- |
+| **Ramsankar B Komath** | The refinement of the scaffold base code both logic and UI, documented the project, and performed the complete deployment. |
+| **Neel A Ved** | Built the initial base scaffold code. |
 
 ---
 
