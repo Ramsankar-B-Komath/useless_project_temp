@@ -118,6 +118,19 @@ window.initStage10 = function(container, onComplete) {
 
   let deathParticles = [];
   let isHoldingJump = false;
+  let jumpBufferTimer = 0;
+
+  function doJump() {
+    if (!player.onGround || isDead) return false;
+    if (player.mode === 'cube' || player.mode === 'gravity' || player.mode === 'mini') {
+      const jumpPower = player.isMini ? 8.6 : 10.4;
+      player.vy = -jumpPower * player.gravityDir;
+      player.onGround = false;
+      window.soundEngine.playGdJump();
+      return true;
+    }
+    return false;
+  }
 
   function setJumpInput(holding) {
     if (isCompleted) return;
@@ -127,13 +140,11 @@ window.initStage10 = function(container, onComplete) {
     }
     isHoldingJump = holding;
     if (holding && !isDead) {
-      if (player.mode === 'cube' || player.mode === 'gravity' || player.mode === 'mini') {
-        if (player.onGround) {
-          const jumpPower = player.isMini ? 11.2 : 12.6;
-          player.vy = -jumpPower * player.gravityDir;
-          player.onGround = false;
-          window.soundEngine.playGdJump();
-        }
+      if (player.onGround) {
+        doJump();
+      } else {
+        // Buffer jump input for up to 180ms so jumping right before landing triggers immediately
+        jumpBufferTimer = performance.now() + 180;
       }
     }
   }
@@ -195,6 +206,7 @@ window.initStage10 = function(container, onComplete) {
     isDead = false;
     gameTime = 0.0;
     deathParticles = [];
+    jumpBufferTimer = 0;
     player.x = 100;
     player.y = FLOOR_Y - 32;
     player.w = 32;
@@ -324,7 +336,8 @@ window.initStage10 = function(container, onComplete) {
           player.vy = 0;
         }
       } else {
-        const gravityAcc = (player.isMini ? 0.60 : 0.52) * player.gravityDir;
+        // Snappy Geometry Dash gravity (Mini: 0.85, Normal: 0.72)
+        const gravityAcc = (player.isMini ? 0.85 : 0.72) * player.gravityDir;
         player.vy += gravityAcc;
         player.y += player.vy;
 
@@ -334,9 +347,15 @@ window.initStage10 = function(container, onComplete) {
             player.vy = 0;
             player.onGround = true;
             player.rotation = Math.round(player.rotation / (Math.PI / 2)) * (Math.PI / 2);
+
+            // Zero end-lag: continuous chain jumping while holding or buffered jump
+            if (isHoldingJump || performance.now() < jumpBufferTimer) {
+              jumpBufferTimer = 0;
+              doJump();
+            }
           } else {
             player.onGround = false;
-            player.rotation += 0.12 * speedFactor;
+            player.rotation += 0.14 * speedFactor;
           }
         } else {
           if (player.y <= CEIL_Y) {
@@ -344,9 +363,15 @@ window.initStage10 = function(container, onComplete) {
             player.vy = 0;
             player.onGround = true;
             player.rotation = Math.round(player.rotation / (Math.PI / 2)) * (Math.PI / 2);
+
+            // Zero end-lag ceiling chain jumping
+            if (isHoldingJump || performance.now() < jumpBufferTimer) {
+              jumpBufferTimer = 0;
+              doJump();
+            }
           } else {
             player.onGround = false;
-            player.rotation -= 0.12 * speedFactor;
+            player.rotation -= 0.14 * speedFactor;
           }
         }
       }
