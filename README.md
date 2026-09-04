@@ -5,6 +5,7 @@
 # ⚡ CAPTCHA FROM HELL ⚡
 ### *The Ultimate Satirical Human Verification Gauntlet*
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://captcha-from-hell-beta.vercel.app)
 [![Vanilla JS](https://img.shields.io/badge/Vanilla_JS-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v3-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
@@ -14,6 +15,10 @@
 <p align="center">
   Ten psychological and neuromotor trials engineered to separate genuine human biology from synthetic algorithms.
 </p>
+
+### 🌐 Live Production Deployment
+**Play the live gauntlet now:**  
+👉 **[https://captcha-from-hell-beta.vercel.app](https://captcha-from-hell-beta.vercel.app)** 👈
 
 </div>
 
@@ -26,6 +31,7 @@
 * **Team Members**:
   * **Team Lead**: Ramsankar B Komath — *Govt. Model Engineering College, Thrikkakara*
   * **Member 2**: Neel A Ved — *Govt. Model Engineering College, Thrikkakara*
+* **Live Demo**: [https://captcha-from-hell-beta.vercel.app](https://captcha-from-hell-beta.vercel.app)
 
 ---
 
@@ -135,6 +141,7 @@ flowchart TD
 * **Hardware & Sensor I/O**: WebRTC Media Streams (`navigator.mediaDevices.getUserMedia`)
 * **Rendering**: HTML5 Canvas 2D Context (60 FPS kinetic physics & platformer loops)
 * **Static Host Server**: PowerShell (v5.1+) `System.Net.HttpListener` (`server.ps1`)
+* **Hosting & Deployment**: Vercel (Edge Network with automatic SSL for hardware media streams)
 
 ---
 
@@ -194,35 +201,23 @@ useless_project_temp/
 
 ---
 
-## 🚀 Installation & Quick Start
+## 🚀 Play & Quick Start
 
-### Option 1: One-Click Local Server (Recommended for Windows)
-> [!NOTE]
-> Running through a local server ensures your browser grants permission for microphone and webcam APIs.
+### 🌐 Play Online (No Setup Required)
+Play immediately via the official Vercel cloud deployment:  
+👉 **[https://captcha-from-hell-beta.vercel.app](https://captcha-from-hell-beta.vercel.app)**
 
+### 💻 Running Locally (Windows)
 Double-click `start_server.bat` or run in PowerShell:
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\server.ps1
 ```
-Then open your browser to:
-```
-http://localhost:8080/
-```
+Then open your browser to `http://localhost:8080/`.
 
-### Option 2: Deploy to Vercel (1-Click Cloud Deploy)
-1. Push this repository to GitHub.
-2. Go to **[vercel.com/new](https://vercel.com/new)** and import your repository.
-3. Framework Preset: **Other** / **Static Site**, Root: `./`.
-4. Click **Deploy**! (Vercel automatically provides HTTPS so Microphone and Webcam APIs work out-of-the-box).
-
-### Option 3: Python 3 (Cross-Platform: Mac / Linux / Windows)
+### 🐍 Python 3 (Mac / Linux / Windows)
 ```bash
 python -m http.server 8080
 ```
-Then navigate to `http://localhost:8080/`.
-
-### Option 4: Direct File Open
-Double-click `index.html` to open directly in any modern browser (Chrome, Edge, Firefox, Brave).
 
 ---
 
