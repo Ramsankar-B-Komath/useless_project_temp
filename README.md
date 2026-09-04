@@ -39,6 +39,34 @@ We engineered **CAPTCHA From Hell**: an unapologetically punishing, 11-stage gau
 
 ---
 
+## 📸 Gameplay & Trial Gallery
+
+<div align="center">
+
+| **Hellfire Title Screen** | **Stage 1: Screaming Decibel Verification** |
+| :---: | :---: |
+| <img src="assets/screenshots/screenshot_title.png" width="480" alt="Title Screen" /> | <img src="assets/screenshots/screenshot_stage1_scream.png" width="480" alt="Stage 1 Screaming" /> |
+
+| **Stage 3: Ultra-Speed Whack-a-Mole** | **Stage 4: Breakup Simulator (Rias)** |
+| :---: | :---: |
+| <img src="assets/screenshots/screenshot_stage3_mole.png" width="480" alt="Stage 3 Whack-a-Mole" /> | <img src="assets/screenshots/screenshot_stage4_breakup.png" width="480" alt="Stage 4 Breakup" /> |
+
+| **Stage 5: Minecraft Wither Battle (CPS Test)** | **Stage 6: Authentic Beacon Crafting** |
+| :---: | :---: |
+| <img src="assets/screenshots/screenshot_stage5_wither.png" width="480" alt="Stage 5 Wither" /> | <img src="assets/screenshots/screenshot_stage6_beacon.png" width="480" alt="Stage 6 Beacon" /> |
+
+| **Stage 8: Moving Rim Free Throws** | **Stage 9: Stock Market Crash Terminal** |
+| :---: | :---: |
+| <img src="assets/screenshots/screenshot_stage8_basketball.png" width="480" alt="Stage 8 Basketball" /> | <img src="assets/screenshots/screenshot_stage9_stock.png" width="480" alt="Stage 9 Stock" /> |
+
+| **Stage 10: Geometry Dash Sprint** | **End Screen: Retro CRT Hardware Roast** |
+| :---: | :---: |
+| <img src="assets/screenshots/screenshot_stage10_gd.png" width="480" alt="Stage 10 Geometry Dash" /> | <img src="assets/screenshots/screenshot_dossier_terminal.png" width="480" alt="CRT Dossier Roast" /> |
+
+</div>
+
+---
+
 ## 🎮 The 11-Stage Gauntlet
 
 | Stage | Title | Biological Metric Tested | Mechanism & Pass Condition |
@@ -117,12 +145,24 @@ useless_project_temp/
 ├── index.html               # Main entry point & layout chassis
 ├── server.ps1               # Lightweight static PowerShell HTTP server
 ├── start_server.bat         # 1-click Windows runner script
-├── README.md                # Project documentation
+├── vercel.json              # Vercel deployment & cache optimization config
+├── README.md                # Project documentation & gameplay showcase
 ├── css/
 │   └── styles.css           # Hellfire gradients, CRT monitor overlays, Minecraft UI, animations
 ├── assets/
 │   ├── audio/
 │   │   └── fail_custom.mp3  # Custom rage scream fail audio (Wither & Basketball misses)
+│   ├── screenshots/         # In-game showcase screenshots
+│   │   ├── screenshot_title.png
+│   │   ├── screenshot_stage1_scream.png
+│   │   ├── screenshot_stage3_mole.png
+│   │   ├── screenshot_stage4_breakup.png
+│   │   ├── screenshot_stage5_wither.png
+│   │   ├── screenshot_stage6_beacon.png
+│   │   ├── screenshot_stage8_basketball.png
+│   │   ├── screenshot_stage9_stock.png
+│   │   ├── screenshot_stage10_gd.png
+│   │   └── screenshot_dossier_terminal.png
 │   └── images/              # Custom sprites and wallpapers
 │       ├── beacon.png, nether_star.png, obsidian.png, glass.png
 │       ├── crafting_table_gui.jpg
@@ -169,17 +209,17 @@ Then open your browser to:
 http://localhost:8080/
 ```
 
-### Option 2: Python 3 (Cross-Platform: Mac / Linux / Windows)
-If you have Python installed:
+### Option 2: Deploy to Vercel (1-Click Cloud Deploy)
+1. Push this repository to GitHub.
+2. Go to **[vercel.com/new](https://vercel.com/new)** and import your repository.
+3. Framework Preset: **Other** / **Static Site**, Root: `./`.
+4. Click **Deploy**! (Vercel automatically provides HTTPS so Microphone and Webcam APIs work out-of-the-box).
+
+### Option 3: Python 3 (Cross-Platform: Mac / Linux / Windows)
 ```bash
 python -m http.server 8080
 ```
 Then navigate to `http://localhost:8080/`.
-
-### Option 3: Node.js / npx
-```bash
-npx serve .
-```
 
 ### Option 4: Direct File Open
 Double-click `index.html` to open directly in any modern browser (Chrome, Edge, Firefox, Brave).
