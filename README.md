@@ -240,6 +240,9 @@ For rapid testing or reviewing specific stages, a discreet **WARP** debug bar is
 
 <div align="center">
 
-† *CAPTCHA FROM HELL • 100% Client-Side Web APIs • Zero AI Slop* †
+Made with ❤️ at TinkerHub Useless Projects
+
+![Static Badge](https://img.shields.io/badge/TinkerHub-24?color=%23000000&link=https%3A%2F%2Fwww.tinkerhub.org%2F)
+![Static Badge](https://img.shields.io/badge/UselessProjects--26-26?link=https%3A%2F%2Ftinkerhub.org%2Fevents%2F1M8ORET9A1%2Fuseless-projects-3.0)
 
 </div>
